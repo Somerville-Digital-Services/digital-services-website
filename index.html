@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Somerville Digital Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,700;1,400&family=Schibsted+Grotesk:wght@900&display=swap">
+<style>
+:root {
+  --paper: url("paper.avif") center / cover fixed;
+  --flood: #171717;
+  --fg: #141414;
+  --cyan: #00a3e0;
+  --yellow: #ffe500;
+  --accent: #e3241b;
+  --cyan-screen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3200' height='600'%3E%3Cpattern id='d' width='4' height='4' patternUnits='userSpaceOnUse' patternTransform='rotate(15)'%3E%3Ccircle cx='2.0' cy='2.0' r='1.9' fill='%2300a3e0'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23d)'/%3E%3C/svg%3E") no-repeat 0 0;
+  --cyan-light-screen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3200' height='600'%3E%3Cpattern id='d' width='4' height='4' patternUnits='userSpaceOnUse' patternTransform='rotate(15)'%3E%3Ccircle cx='2.0' cy='2.0' r='1.1' fill='%2300a3e0'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23d)'/%3E%3C/svg%3E") no-repeat 0 0;
+  --black-screen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3200' height='600'%3E%3Cpattern id='d' width='4' height='4' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'%3E%3Ccircle cx='2.0' cy='2.0' r='1.8' fill='%231a1a1a'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23d)'/%3E%3C/svg%3E") no-repeat 0 0;
+  --seal-filter: grayscale(1) invert(1);
+  --seal-blend: screen;
+  --seal-opacity: 0.15;
+  --copy: #1d1d1d;
+  --body-font: "Proxima Nova", "Figtree", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --flood: #ffffff; --seal-filter: none; --seal-blend: multiply; --seal-opacity: 0.43; }
+}
+html, body { margin: 0; overflow-x: hidden; }
+body {
+  background: linear-gradient(var(--flood), var(--flood)) fixed, var(--paper);
+  background-color: #ffffff;
+  background-blend-mode: multiply;
+  font-family: var(--font);
+  padding: clamp(16px, 4vw, 56px);
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.hero {
+  min-height: calc(100vh - 2 * clamp(16px, 4vw, 56px));
+  display: grid;
+  align-content: end;
+}
+.article {
+  flex: 1 0 auto;
+  margin: clamp(64px, 12vw, 140px) calc(-1 * clamp(16px, 4vw, 56px)) 0;
+  font-family: var(--body-font);
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--copy);
+  background: rgba(255, 255, 255, 0.5);
+  padding: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 56px);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+.bar {
+  position: relative;
+  height: clamp(40px, 6vw, 72px);
+  flex-shrink: 0;
+  margin: auto calc(-1 * clamp(16px, 4vw, 56px)) calc(-1 * clamp(16px, 4vw, 56px));
+  background: var(--paper);
+}
+.bar::before,
+.bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+}
+.bar::before { background: var(--yellow); transform: translate(-2.5px, 1.5px); }
+.bar::after { background: var(--cyan-screen); transform: translate(2px, -1.5px); }
+.article p { max-width: 520px; margin: 0 auto 28px; }
+.article p:last-of-type { margin-bottom: 0; }
+.three11 {
+  display: block;
+  width: 260px;
+  max-width: 100%;
+  margin: clamp(40px, 6vw, 64px) auto 0;
+  mix-blend-mode: multiply;
+}
+.article p:first-child::first-letter {
+  float: left;
+  font-family: var(--font);
+  font-weight: 900;
+  font-size: 4.55em;
+  line-height: 0.94;
+  margin: -3px 1px 0 0;
+  padding-right: 7px;
+}
+.seal {
+  position: absolute;
+  top: clamp(16px, 4vw, 56px);
+  right: 1vmin;
+  width: 32vmin;
+  aspect-ratio: 1;
+  transform: rotate(-10deg);
+  filter: url(#photocopy) var(--seal-filter);
+  mix-blend-mode: var(--seal-blend);
+  opacity: var(--seal-opacity);
+  pointer-events: none;
+}
+.seal img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  mix-blend-mode: multiply;
+}
+.seal .plate-c { transform: translate(-0.35%, 0.25%); }
+.seal .plate-k { transform: translate(0.3%, -0.2%); }
+h1 {
+  align-self: end;
+  margin: 0;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 15vw, 15rem);
+  line-height: 0.86;
+}
+h1 span {
+  display: block;
+  position: relative;
+  color: transparent;
+  background: var(--paper);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+h1 span::before,
+h1 span::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  mix-blend-mode: multiply;
+}
+h1 span::before { transform: translate(-0.012em, 0.008em); }
+h1 span::after { transform: translate(0.01em, -0.006em); }
+.city { left: -0.062em; margin-bottom: 0.08em; }
+.city::before { color: var(--yellow); background: none; }
+.city::after { background: var(--cyan-screen); -webkit-background-clip: text; background-clip: text; }
+.grey::before { background: var(--cyan-light-screen); -webkit-background-clip: text; background-clip: text; }
+.grey::after { background: var(--black-screen); -webkit-background-clip: text; background-clip: text; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="photocopy" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="5" result="warp"/>
+    <feDisplacementMap in="SourceGraphic" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="2" seed="9" result="n1"/>
+    <feColorMatrix in="n1" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -12 0 0 0 7.7" result="keep"/>
+    <feComposite in="rough" in2="keep" operator="in" result="worn"/>
+    <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="near"/>
+    <feComponentTransfer in="near" result="zone"><feFuncA type="linear" slope="5"/></feComponentTransfer>
+    <feTurbulence type="fractalNoise" baseFrequency="0.45" numOctaves="2" seed="21" result="n2"/>
+    <feColorMatrix in="n2" type="matrix" values="0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  30 0 0 0 -18.3" result="dust"/>
+    <feComposite in="dust" in2="zone" operator="in" result="specks"/>
+    <feMerge><feMergeNode in="specks"/><feMergeNode in="worn"/></feMerge>
+  </filter>
+</svg>
+<div class="seal" aria-hidden="true"><img class="plate-c" src="seal-c.svg" alt=""><img class="plate-k" src="seal-k.svg" alt=""></div>
+<header class="hero">
+<h1><span class="city" data-text="Somerville">Somerville</span><span class="grey" data-text="Digital">Digital</span><span class="grey" data-text="Services">Services</span></h1>
+</header>
+<main class="article">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus, posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum, nullam quis risus eget urna mollis ornare vel eu leo.</p>
+  <p>Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod, sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+  <p>Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+  <img class="three11" src="somerville-311.png" alt="One call to City Hall: 311 Somerville">
+</main>
+<footer class="bar" aria-hidden="true"></footer>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+if (window.Lenis && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const lenis = new Lenis({ lerp: 0.08, wheelMultiplier: 0.9 });
+  requestAnimationFrame(function raf(t) { lenis.raf(t); requestAnimationFrame(raf); });
+}
+</script>
+</body>
+</html>
